@@ -1,4 +1,5 @@
 import { randomInt } from './random';
+import { formatNumber, formatPolynomial } from './format';
 
 // Линейное уравнение ax + b = c с целым корнем
 export function linearEquation(): { question: string; answer: string } {
@@ -12,8 +13,13 @@ export function linearEquation(): { question: string; answer: string } {
 
   const c = a * x + b;            // 3. правую часть вычисляем
 
+  const left = formatPolynomial([
+    { coef: a, variable: 'x' },
+    { coef: b, variable: '' },
+  ]);
+
   return {
-    question: `${a}x + ${b} = ${c}`,
-    answer: `x = ${x}`,
+    question: `${left} = ${formatNumber(c)}`,
+    answer: `x = ${formatNumber(x)}`,
   };
 }

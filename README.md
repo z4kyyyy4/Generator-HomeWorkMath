@@ -125,3 +125,13 @@ npm install
 | `src/format.ts` | запись уравнений по-школьному |
 | `src/random.ts` | случайные целые числа |
  
+ ## Функции
+
+| Функция | Файл | Что делает |
+|---|---|---|
+| `activate()` | `extension.ts` | регистрирует команду при запуске плагина |
+| `linearEquation()` | `linear.ts` | создаёт линейное уравнение с ответом |
+| `quadraticEquation()` | `quadratic.ts` | создаёт квадратное уравнение с ответом |
+| `formatPolynomial(terms)` | `format.ts` | записывает многочлен как в тетради |
+| `formatNumber(n)` | `format.ts` | записывает число с минусом «−» |
+| `randomInt(min, max)` | `random.ts` | возвращает случайное целое число от min до max |

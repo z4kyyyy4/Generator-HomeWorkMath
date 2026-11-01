@@ -35,10 +35,23 @@ export function activate(context: vscode.ExtensionContext) {
       answers += `${i}. ${eq.answer}\n`;
     }
 
-    // 4. Показываем в новой вкладке
-    const content = `# ${type} уравнения\n\n${tasks}\n## Ответы\n\n${answers}`;
-    const doc = await vscode.workspace.openTextDocument({ content, language: 'markdown' });
-    await vscode.window.showTextDocument(doc);
+    // 4. Папка, открытая в VS Code
+    const folders = vscode.workspace.workspaceFolders;
+    if (!folders || folders.length === 0) {
+      vscode.window.showErrorMessage('Сначала откройте папку: File → Open Folder');
+      return;
+    }
+    const folder = folders[0].uri;
+
+    // 5. Записываем два файла
+    const tasksFile = vscode.Uri.joinPath(folder, 'ДЗ.md');
+    const answersFile = vscode.Uri.joinPath(folder, 'Ответы.md');
+    await vscode.workspace.fs.writeFile(tasksFile, Buffer.from(`# ${type} уравнения\n\n${tasks}`));
+    await vscode.workspace.fs.writeFile(answersFile, Buffer.from(`# Ответы\n\n${answers}`));
+
+    // 6. Открываем задание и сообщаем
+    await vscode.window.showTextDocument(tasksFile);
+    vscode.window.showInformationMessage('Готово! Задание: ДЗ.md, ответы: Ответы.md');
   });
   context.subscriptions.push(command);
 }

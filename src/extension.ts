@@ -2,6 +2,10 @@ import * as vscode from 'vscode';
 import { linearEquation } from './leaner';
 import { quadraticEquation } from './quadratic';
 
+/**
+ * Вызывается VS Code при запуске плагина.
+ * Регистрирует команду «Создать ДЗ по уравнениям».
+ */
 export function activate(context: vscode.ExtensionContext) {
   const command = vscode.commands.registerCommand('generator-hw.generate', async () => {
     // 1. Какие уравнения
@@ -56,4 +60,5 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(command);
 }
 
+/** Вызывается при выключении плагина. Освобождать нечего. */
 export function deactivate() {}

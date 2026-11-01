@@ -1,7 +1,11 @@
 import { randomInt } from './random';
 import { formatNumber, formatPolynomial } from './format';
 
-// Линейное уравнение ax + b = c с целым корнем
+/**
+ * Создаёт линейное уравнение ax + b = c с целым корнем.
+ * Сначала выбирается корень, потом по нему вычисляется c.
+ * @returns условие уравнения и ответ
+ */
 export function linearEquation(): { question: string; answer: string } {
   const x = randomInt(-10, 10);   // 1. сначала ответ
 

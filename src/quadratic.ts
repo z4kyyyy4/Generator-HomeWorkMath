@@ -1,7 +1,11 @@
 import { randomInt } from './random';
 import { formatNumber, formatPolynomial } from './format';
 
-// Квадратное уравнение ax² + bx + c = 0 с двумя разными целыми корнями
+/**
+ * Создаёт квадратное уравнение ax² + bx + c = 0 с двумя разными целыми корнями.
+ * Корни выбираются заранее, уравнение получается раскрытием скобок k(x − x1)(x − x2).
+ * @returns условие уравнения и ответ с корнями по возрастанию
+ */
 export function quadraticEquation(): { question: string; answer: string } {
   // 1. сначала корни, и они должны быть разными
   const x1 = randomInt(-9, 9);

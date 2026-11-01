@@ -4,12 +4,19 @@ const MINUS = '−';
 // Член многочлена: коэффициент и переменная ('x', 'x²' или '' для числа)
 export type Term = { coef: number; variable: string };
 
-// Число со знаком минуса: −7 вместо -7
+/**
+ * Записывает число со знаком «−» вместо дефиса, например −7.
+ * @param n число
+ */
 export function formatNumber(n: number): string {
   return n < 0 ? MINUS + Math.abs(n) : String(n);
 }
 
-// Один член. first — первый ли он: перед первым не ставим « + »
+/**
+ * Записывает один член многочлена: знак, коэффициент и переменную.
+ * @param t член многочлена
+ * @param first true, если член первый: перед ним не ставится « + »
+ */
 function formatTerm(t: Term, first: boolean): string {
   let sign: string;
   if (first) {
@@ -23,7 +30,12 @@ function formatTerm(t: Term, first: boolean): string {
   return sign + number + t.variable;
 }
 
-// Весь многочлен: пропускает нули, расставляет знаки
+/**
+ * Записывает многочлен как в тетради: без нулевых членов,
+ * без коэффициента 1 перед x, со знаками между членами.
+ * @param terms члены многочлена по порядку
+ * @returns строка, например «−4x − 6»
+ */
 export function formatPolynomial(terms: Term[]): string {
   let result = '';
   for (const t of terms) {

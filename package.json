@@ -13,11 +13,12 @@
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
-      {
-        "command": "generator-hw.helloWorld",
-        "title": "Hello World"
-      }
-    ]
+  {
+    "command": "generator-hw.generate",
+    "title": "Создать ДЗ по уравнениям",
+    "category": "Генератор ДЗ"
+  }
+]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

@@ -1,71 +1,36 @@
-# generator-hw README
+# Generator HW
 
-This is the README for your extension "generator-hw". After writing up a brief description, we recommend including the following sections.
+Расширение для VS Code, которое создаёт домашнее задание по математике: линейные и квадратные уравнения с ответами.
 
-## Features
+## Как пользоваться
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+1. Откройте папку в VS Code.
+2. `⌘⇧P` (на Windows `Ctrl+Shift+P`) → **Генератор ДЗ: Создать ДЗ по уравнениям**.
+3. Выберите тип уравнений и количество.
+4. В папке появятся `ДЗ.md` с заданием и `Ответы.md` с ответами.
 
-For example if there is an image subfolder under your extension project workspace:
+## Как это работает
 
-\!\[feature X\]\(images/feature-x.png\)
+Уравнение строится от ответа: сначала выбирается корень, потом по нему вычисляются коэффициенты. Поэтому ответы всегда целые.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- Линейное: выбираем `x`, `a`, `b` и вычисляем `c = a·x + b`, получается `ax + b = c`.
+- Квадратное: выбираем корни `x₁`, `x₂` и раскрываем скобки `k(x − x₁)(x − x₂)`.
 
-## Requirements
+## Структура
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+| Файл | Что делает |
+|---|---|
+| `package.json` | манифест: объявляет команду |
+| `src/extension.ts` | регистрирует команду, диалог, запись файлов |
+| `src/linear.ts` | генератор линейных уравнений |
+| `src/quadratic.ts` | генератор квадратных уравнений |
+| `src/format.ts` | запись уравнений по-школьному |
+| `src/random.ts` | случайные целые числа |
 
-## Extension Settings
+## Разработка
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+```bash
+npm install
+```
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Откройте папку проекта в VS Code и нажмите F5.
